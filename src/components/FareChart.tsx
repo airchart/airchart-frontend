@@ -10,6 +10,17 @@ import {
 import { motion } from "framer-motion";
 
 export function FareChart({ fareData }: { fareData: FareItem[] }) {
+  const _fareData = fareData.sort((a, b) => {
+    return (
+      new Date(a.search_date).getTime() - new Date(b.search_date).getTime()
+    );
+  });
+
+  const formatDate = (date: string) => {
+    const d = new Date(date);
+    return `${d.getMonth() + 1}/${d.getDate()}`;
+  };
+
   return (
     <motion.div
       whileTap={{ scale: 0.98 }}
@@ -21,15 +32,12 @@ export function FareChart({ fareData }: { fareData: FareItem[] }) {
         <h2 className="text-xl font-bold mb-4">가격 변동 추이</h2>
         <div className="h-[400px]">
           <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={fareData}>
-              <XAxis
-                dataKey="search_date"
-                tickFormatter={(date) => new Date(date).toLocaleDateString()}
-              />
+            <LineChart data={_fareData}>
+              <XAxis dataKey="search_date" tickFormatter={formatDate} />
               <YAxis />
               <Tooltip
                 formatter={(value) => `${value.toLocaleString()}원`}
-                labelFormatter={(date) => new Date(date).toLocaleDateString()}
+                labelFormatter={formatDate}
               />
               <Line
                 type="monotone"
