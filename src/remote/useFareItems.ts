@@ -1,6 +1,6 @@
 import useSWR from "swr";
 
-interface FareItem {
+export interface FareItem {
   search_date: string;
   depart_date: string;
   fare: number;
