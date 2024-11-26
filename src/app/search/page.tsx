@@ -97,7 +97,6 @@ function SearchResultContent() {
   );
 
   const [consecutivePriceChange, sign] = getConsecutivePriceChange(fareData);
-  console.log(consecutivePriceChange, sign);
 
   return (
     <div className="min-h-screen md:p-8 p-4 font-[family-name:var(--font-geist-sans)]">
@@ -106,8 +105,8 @@ function SearchResultContent() {
         <div className="flex md:flex-row flex-col items-center md:justify-between">
           <div className="md:mb-12 mb-8 space-y-4">
             <p className="text-gray-600 dark:text-gray-400">
-              인천(ICN) {isRoundtrip ? "↔" : "→"} {destCity?.name}({to}) |{" "}
-              {formatKORDateString(departDate)}
+              인천(ICN) {isRoundtrip ? "↔" : "→"} {destCity?.name}({to})
+              <br className="md:hidden" /> | {formatKORDateString(departDate)}
               {isRoundtrip && ` ~ ${formatKORDateString(returnDate!)}`}
             </p>
             <div className="flex flex-row items-center gap-4">
