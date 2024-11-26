@@ -16,9 +16,20 @@ const fetcher = async (url: string) => {
   return json.data;
 };
 
-export function useFareItems(from: string, to: string, date: string) {
+export function useFareItems(
+  from: string,
+  to: string,
+  date: string,
+  returnDate: string | null
+) {
+  const pathname = returnDate ? "/api/fares/round" : "/api/fares";
+
   return useSWR<FareItem[]>(
-    from && to && date ? `/api/fares?from=${from}&to=${to}&date=${date}` : null,
+    from && to && date
+      ? `${pathname}?from=${from}&to=${to}&date=${date}${
+          returnDate ? `&returnDate=${returnDate}` : ""
+        }`
+      : null,
     fetcher,
     {
       revalidateOnFocus: false, // 탭 포커스시 재검증 비활성화

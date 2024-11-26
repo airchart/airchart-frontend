@@ -9,7 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/env": "^15.0.3",
+    "@radix-ui/react-icons": "^1.3.2",
     "@supabase/supabase-js": "^2.46.1",
+    "@toss/utils": "^1.6.1",
+    "date-fns": "^4.1.0",
     "framer-motion": "^11.11.17",
     "next": "15.0.3",
     "react": "^18.2.0",

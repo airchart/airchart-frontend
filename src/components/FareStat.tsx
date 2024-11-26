@@ -1,4 +1,5 @@
 import { FareItem } from "@/remote/useFareItems";
+import { formatToKRW } from "@toss/utils";
 
 export function FareStat({ fareData }: { fareData: FareItem[] }) {
   // 통계 데이터 계산
@@ -18,19 +19,19 @@ export function FareStat({ fareData }: { fareData: FareItem[] }) {
   const avgPrice = stats.count > 0 ? Math.round(stats.sum / stats.count) : 0;
 
   return (
-    <div className="grid grid-cols-3 gap-4 mb-8">
-      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
-        <p className="text-sm text-gray-500 dark:text-gray-400">최저가</p>
-        <p className="text-2xl font-bold">{stats.min.toLocaleString()}원</p>
-      </div>
-      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
-        <p className="text-sm text-gray-500 dark:text-gray-400">평균가</p>
-        <p className="text-2xl font-bold">{avgPrice.toLocaleString()}원</p>
-      </div>
-      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
-        <p className="text-sm text-gray-500 dark:text-gray-400">최고가</p>
-        <p className="text-2xl font-bold">{stats.max.toLocaleString()}원</p>
-      </div>
+    <div className="grid md:grid-cols-3 grid-cols-1 gap-4 mb-8">
+      <Card title="최저가" value={stats.min} />
+      <Card title="평균가" value={avgPrice} />
+      <Card title="최고가" value={stats.max} />
+    </div>
+  );
+}
+
+function Card({ title, value }: { title: string; value: number }) {
+  return (
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm flex md:flex-col flex-row md:items-start items-center justify-between">
+      <p className="text-sm text-gray-500 dark:text-gray-400">{title}</p>
+      <p className="text-2xl font-bold">{formatToKRW(value)}</p>
     </div>
   );
 }

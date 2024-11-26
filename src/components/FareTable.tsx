@@ -4,21 +4,21 @@ export function FareTable({ fareData }: { fareData: FareItem[] }) {
   const maxFare = Math.max(...fareData.map((item) => item.fare));
   const minFare = Math.min(...fareData.map((item) => item.fare));
 
-  const _fareData = fareData.sort((a, b) => {
+  const _fareData = [...fareData].sort((a, b) => {
     return (
       new Date(b.search_date).getTime() - new Date(a.search_date).getTime()
     );
   });
 
   return (
-    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
-      <h2 className="text-xl font-bold mb-4">검색 기록</h2>
+    <div className="bg-white dark:bg-gray-800 md:p-6 p-4 rounded-lg shadow-sm">
+      <h2 className="text-xl font-bold mb-4">날짜별 변동</h2>
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
             <tr className="border-b dark:border-gray-700">
-              <th className="text-left py-3 px-4">구매일</th>
-              <th className="text-right py-3 px-4">가격</th>
+              <th className="text-left py-3 md:px-4 ">구매일</th>
+              <th className="text-right py-3 md:px-4 ">가격</th>
             </tr>
           </thead>
           <tbody>
@@ -27,27 +27,13 @@ export function FareTable({ fareData }: { fareData: FareItem[] }) {
                 key={item.search_date}
                 className="border-b dark:border-gray-700"
               >
-                <td className="py-3 px-4">
-                  {new Date(item.search_date).toLocaleDateString("ko-KR", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </td>
-                <td className="text-right py-3 px-4">
+                <td className="py-3 md:px-4 ">{item.search_date}</td>
+                <td className="text-right py-3 md:px-4 ">
                   <div className="flex items-center justify-end gap-2">
-                    {item.fare === maxFare && (
-                      <span className="px-2 py-0.5 text-xs font-medium bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 rounded-full">
-                        최고
-                      </span>
-                    )}
-                    {item.fare === minFare && (
-                      <span className="px-2 py-0.5 text-xs font-medium bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300 rounded-full">
-                        최저
-                      </span>
-                    )}
+                    {item.fare === maxFare && <Chip color="blue">최고</Chip>}
+                    {item.fare === minFare && <Chip color="green">최저</Chip>}
                     <div>
-                      {item.fare.toLocaleString()}원
+                      {item.fare.toLocaleString()}원<br className="md:hidden" />
                       {index < fareData.length - 1 && (
                         <span
                           className={`ml-2 text-sm ${
@@ -82,5 +68,21 @@ export function FareTable({ fareData }: { fareData: FareItem[] }) {
         </table>
       </div>
     </div>
+  );
+}
+
+function Chip({
+  children,
+  color,
+}: {
+  children: React.ReactNode;
+  color: "blue" | "green";
+}) {
+  return (
+    <span
+      className={`px-2 py-0.5 text-xs font-medium bg-${color}-100 text-${color}-700 dark:bg-${color}-900 dark:text-${color}-300 rounded-full`}
+    >
+      {children}
+    </span>
   );
 }
