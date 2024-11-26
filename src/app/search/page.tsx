@@ -11,23 +11,7 @@ import {
 } from "recharts";
 import { cities } from "@/constants/cities";
 import { Suspense } from "react";
-import useSWR from "swr";
-
-// fetcher 함수 정의
-const fetcher = async (url: string) => {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error("데이터를 불러오는데 실패했습니다");
-  }
-  const json = await response.json();
-  return json.data;
-};
-
-interface FareItem {
-  search_date: string;
-  depart_date: string;
-  fare: number;
-}
+import { useFareItems } from "@/remote/useFareItems";
 
 function SearchResultContent() {
   const searchParams = useSearchParams();
@@ -42,15 +26,7 @@ function SearchResultContent() {
     data: fareData = [],
     error,
     isLoading,
-  } = useSWR<FareItem[]>(
-    from && to && date ? `/api/fares?from=${from}&to=${to}&date=${date}` : null,
-    fetcher,
-    {
-      revalidateOnFocus: false, // 탭 포커스시 재검증 비활성화
-      revalidateOnReconnect: false, // 재연결시 재검증 비활성화
-      dedupingInterval: 600000, // 10분간 중복 요청 방지
-    }
-  );
+  } = useFareItems(from!, to!, date!);
 
   // 통계 데이터 계산
   const stats = fareData.reduce(
@@ -160,7 +136,7 @@ function SearchResultContent() {
                 </tr>
               </thead>
               <tbody>
-                {fareData.map((item: FareItem, index: number) => (
+                {fareData.map((item, index: number) => (
                   <tr
                     key={item.search_date}
                     className="border-b dark:border-gray-700"
