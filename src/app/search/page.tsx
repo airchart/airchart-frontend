@@ -279,7 +279,7 @@ function NaverFlightButton({
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={NAVER_FLIGHT_ICON_URL} alt="네이버 항공" className="w-6 h-6" />
-      바로 구매하기
+      실시간 가격 보러가기
     </a>
   );
 }
