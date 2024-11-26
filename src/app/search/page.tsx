@@ -111,7 +111,7 @@ function SearchResultContent() {
             </p>
             <div className="flex flex-row items-center gap-4">
               <h1 className="text-3xl font-bold mb-2 leading-relaxed w-fit">
-                지금{isRoundtrip ? " 왕복 " : ""}
+                오늘{isRoundtrip ? " 왕복 " : " "}
                 <br className="md:hidden" />
                 <b className="text-red-500">
                   {formatToKRW(currentRecord.fare)}
