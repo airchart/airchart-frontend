@@ -104,7 +104,7 @@ function SearchResultContent() {
         {/* 검색 정보 요약 */}
         <div className="flex md:flex-row flex-col md:items-center md:justify-between">
           <div className="md:mb-12 mb-8 space-y-4">
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-gray-400">
               인천(ICN) {isRoundtrip ? "↔" : "→"} {destCity?.name}({to})
               <br className="md:hidden" /> | {formatKORDateString(departDate)}
               {isRoundtrip && ` ~ ${formatKORDateString(returnDate!)}`}
@@ -149,7 +149,7 @@ function SearchResultContent() {
           />
         </div>
 
-        <div className="space-y-2 mb-8 text-sm text-gray-600 dark:text-gray-400">
+        <div className="space-y-2 mb-8 text-sm text-gray-400">
           {currentFare > minFare && currentFare !== maxFare ? (
             <InfoItem>
               • 30일 최저가보다{" "}

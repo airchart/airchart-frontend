@@ -45,20 +45,18 @@ export default function Home() {
       <main className="max-w-md mx-auto mt-20">
         <div className="text-center mb-12">
           <h1 className="text-3xl font-bold mb-2">AirChart</h1>
-          <p className="text-gray-600 dark:text-gray-400">
-            항공권 가격 추이를 한눈에 확인하세요
-          </p>
+          <p className="text-gray-400">항공권 가격 추이를 한눈에 확인하세요</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* 여정 타입 선택 */}
-          <div className="flex gap-4 p-1 bg-gray-100 dark:bg-gray-800 rounded-lg">
+          <div className="flex gap-4 p-1 bg-gray-800 rounded-lg">
             <button
               type="button"
               className={`flex-1 py-2 rounded-md text-sm font-medium transition-colors ${
                 tripType === "oneway"
-                  ? "bg-white dark:bg-gray-700 shadow-sm"
-                  : "text-gray-500 dark:text-gray-400"
+                  ? "bg-gray-700 shadow-sm"
+                  : "text-gray-400"
               }`}
               onClick={() => setTripType("oneway")}
             >
@@ -68,8 +66,8 @@ export default function Home() {
               type="button"
               className={`flex-1 py-2 rounded-md text-sm font-medium transition-colors ${
                 tripType === "roundtrip"
-                  ? "bg-white dark:bg-gray-700 shadow-sm"
-                  : "text-gray-500 dark:text-gray-400"
+                  ? "bg-gray-700 shadow-sm"
+                  : "text-gray-400"
               }`}
               onClick={() => setTripType("roundtrip")}
             >
@@ -84,7 +82,7 @@ export default function Home() {
               type="text"
               value="인천국제공항 (ICN)"
               disabled
-              className="w-full p-3 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700"
+              className="w-full p-3 rounded-lg bg-gray-800 border border-gray-700"
             />
           </div>
 
@@ -92,7 +90,7 @@ export default function Home() {
           <div>
             <label className="block text-sm font-medium mb-2">도착지</label>
             <select
-              className="w-full p-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900"
+              className="w-full p-3 rounded-lg border border-gray-700 bg-gray-900"
               value={destination}
               onChange={(e) => setDestination(e.target.value)}
               required
@@ -119,7 +117,7 @@ export default function Home() {
                 value={departureDate}
                 onChange={(e) => setDepartureDate(e.target.value)}
                 min={new Date().toISOString().split("T")[0]}
-                className="w-full p-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 [color-scheme:light]"
+                className="w-full p-3 rounded-lg border border-gray-700 bg-gray-900 [color-scheme:light]"
                 required
               />
             </div>
@@ -134,7 +132,7 @@ export default function Home() {
                   value={returnDate}
                   onChange={(e) => setReturnDate(e.target.value)}
                   min={departureDate || new Date().toISOString().split("T")[0]}
-                  className="w-full p-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 [color-scheme:light]"
+                  className="w-full p-3 rounded-lg border border-gray-700 bg-gray-900 [color-scheme:light]"
                   required
                 />
               </div>

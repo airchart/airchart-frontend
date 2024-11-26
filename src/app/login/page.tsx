@@ -48,14 +48,12 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-md w-full space-y-8 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900">
+      <div className="max-w-md w-full space-y-8 p-8 bg-gray-800 rounded-lg shadow-md">
         {/* 로고 및 서비스 제목 */}
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-            항공권 가격 추적기
-          </h1>
-          <p className="mt-2 text-gray-600 dark:text-gray-400">
+          <h1 className="text-3xl font-bold text-white">항공권 가격 추적기</h1>
+          <p className="mt-2 text-gray-400">
             실시간으로 항공권 가격을 추적하고 알림을 받아보세요
           </p>
         </div>
@@ -78,9 +76,7 @@ export default function LoginPage() {
                 />
               </svg>
             </div>
-            <span className="text-gray-700 dark:text-gray-300">
-              실시간 가격 모니터링
-            </span>
+            <span className="text-gray-300">실시간 가격 모니터링</span>
           </div>
           <div className="flex items-center space-x-3">
             <div className="flex-shrink-0">
@@ -98,9 +94,7 @@ export default function LoginPage() {
                 />
               </svg>
             </div>
-            <span className="text-gray-700 dark:text-gray-300">
-              가격 변동 알림
-            </span>
+            <span className="text-gray-300">가격 변동 알림</span>
           </div>
           <div className="flex items-center space-x-3">
             <div className="flex-shrink-0">
@@ -118,9 +112,7 @@ export default function LoginPage() {
                 />
               </svg>
             </div>
-            <span className="text-gray-700 dark:text-gray-300">
-              가격 추이 분석
-            </span>
+            <span className="text-gray-300">가격 추이 분석</span>
           </div>
         </div>
 

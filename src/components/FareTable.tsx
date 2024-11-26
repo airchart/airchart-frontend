@@ -11,22 +11,19 @@ export function FareTable({ fareData }: { fareData: FareItem[] }) {
   });
 
   return (
-    <div className="bg-white dark:bg-gray-800 md:p-6 p-4 rounded-lg shadow-sm">
+    <div className="bg-gray-800 md:p-6 p-4 rounded-lg shadow-sm">
       <h2 className="text-xl font-bold mb-4">날짜별 변동</h2>
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="border-b dark:border-gray-700">
+            <tr className="border-b border-gray-700">
               <th className="text-left py-3 md:px-4 ">구매일</th>
               <th className="text-right py-3 md:px-4 ">가격</th>
             </tr>
           </thead>
           <tbody>
             {_fareData.map((item, index: number) => (
-              <tr
-                key={item.search_date}
-                className="border-b dark:border-gray-700"
-              >
+              <tr key={item.search_date} className="border-b border-gray-700">
                 <td className="py-3 md:px-4 ">{item.search_date}</td>
                 <td className="text-right py-3 md:px-4 ">
                   <div className="flex items-center justify-end gap-2">
@@ -78,9 +75,14 @@ function Chip({
   children: React.ReactNode;
   color: "blue" | "green";
 }) {
+  const colorClass =
+    color === "blue"
+      ? "bg-blue-900 text-blue-300"
+      : "bg-green-900 text-green-300";
+
   return (
     <span
-      className={`px-2 py-0.5 text-xs font-medium bg-${color}-100 text-${color}-700 dark:bg-${color}-900 dark:text-${color}-300 rounded-full`}
+      className={`px-2 py-0.5 text-xs font-medium ${colorClass} rounded-full`}
     >
       {children}
     </span>

@@ -63,10 +63,10 @@ export default function RootLayout({
             href="https://github.com/hiimjayson/airchart-frontend"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            className="p-2 rounded-full hover:bg-gray-800 transition-colors"
             aria-label="GitHub 저장소로 이동"
           >
-            <GitHubLogoIcon className="size-8 text-gray-600 dark:text-gray-400" />
+            <GitHubLogoIcon className="size-8 text-gray-400" />
           </a>
         </div>
         <FadeIn>{children}</FadeIn>

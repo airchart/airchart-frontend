@@ -22,7 +22,7 @@ export function FareChart({ fareData }: { fareData: FareItem[] }) {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm mb-8">
+    <div className="bg-gray-800 p-6 rounded-lg shadow-sm mb-8">
       <h2 className="text-xl font-bold mb-4">가격 변동 추이</h2>
       <div className="h-[400px]">
         <ResponsiveContainer width="100%" height="100%">

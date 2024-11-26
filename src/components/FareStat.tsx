@@ -29,8 +29,8 @@ export function FareStat({ fareData }: { fareData: FareItem[] }) {
 
 function Card({ title, value }: { title: string; value: number }) {
   return (
-    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm flex md:flex-col flex-row md:items-start items-center justify-between">
-      <p className="text-sm text-gray-500 dark:text-gray-400">{title}</p>
+    <div className="bg-gray-800 p-6 rounded-lg shadow-sm flex md:flex-col flex-row md:items-start items-center justify-between">
+      <p className="text-sm text-gray-400">{title}</p>
       <p className="text-2xl font-bold">{formatToKRW(value)}</p>
     </div>
   );
