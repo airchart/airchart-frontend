@@ -4,6 +4,12 @@ export function FareTable({ fareData }: { fareData: FareItem[] }) {
   const maxFare = Math.max(...fareData.map((item) => item.fare));
   const minFare = Math.min(...fareData.map((item) => item.fare));
 
+  const _fareData = fareData.sort((a, b) => {
+    return (
+      new Date(b.search_date).getTime() - new Date(a.search_date).getTime()
+    );
+  });
+
   return (
     <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
       <h2 className="text-xl font-bold mb-4">검색 기록</h2>
@@ -11,26 +17,18 @@ export function FareTable({ fareData }: { fareData: FareItem[] }) {
         <table className="w-full">
           <thead>
             <tr className="border-b dark:border-gray-700">
-              <th className="text-left py-3 px-4">검색일</th>
-              <th className="text-left py-3 px-4">출발일</th>
+              <th className="text-left py-3 px-4">구매일</th>
               <th className="text-right py-3 px-4">가격</th>
             </tr>
           </thead>
           <tbody>
-            {fareData.map((item, index: number) => (
+            {_fareData.map((item, index: number) => (
               <tr
                 key={item.search_date}
                 className="border-b dark:border-gray-700"
               >
                 <td className="py-3 px-4">
                   {new Date(item.search_date).toLocaleDateString("ko-KR", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </td>
-                <td className="py-3 px-4">
-                  {new Date(item.depart_date).toLocaleDateString("ko-KR", {
                     year: "numeric",
                     month: "long",
                     day: "numeric",
