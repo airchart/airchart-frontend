@@ -14,7 +14,7 @@ import { buildNaverFlightUrl } from "@/lib/naver";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 
 // 연속된 가격 변동 일수를 계산하는 함수
-export function getConsecutivePriceChange(
+function getConsecutivePriceChange(
   fareData: FareItem[]
 ): [number, "plus" | "minus" | null] {
   let count = 0;
@@ -46,15 +46,8 @@ export function getConsecutivePriceChange(
   return [count, sign];
 }
 
-// 가격이 상승 중인지 확인하는 함수
-export function isPriceIncreasing(fareData: FareItem[]): boolean {
-  return (
-    fareData[fareData.length - 1].fare > fareData[fareData.length - 2].fare
-  );
-}
-
 // 출발까지 남은 일수를 계산하는 함수
-export function getDaysUntilDeparture(departureDate: Date): number {
+function getDaysUntilDeparture(departureDate: Date): number {
   const today = new Date();
   const diffTime = departureDate.getTime() - today.getTime();
   return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
