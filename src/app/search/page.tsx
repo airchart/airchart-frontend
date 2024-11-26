@@ -124,9 +124,14 @@ function SearchResultContent() {
               <div className="relative">
                 <InfoCircledIcon className="size-6 cursor-pointer hover:opacity-80 peer" />
                 <div className="absolute z-10 opacity-0 peer-hover:opacity-100 transition-opacity duration-200 bg-gray-200 text-gray-800 text-sm rounded-md p-2 -right-2 top-8 md:w-80 w-64">
+                  - 직항/1인 기준 금액이에요
+                  <br />
+                  - 크롤링한 사이트 기준 금액에요. 더 저렴한 항공권이 있을 수
+                  있어요
+                  <br />
                   - 매일 자정에 업데이트돼요. 실시간 가격과 조금 다를 수 있어요
                   <br />
-                  - 직항/1인 기준 금액이에요
+                  - 변동 추이만 확인해주세요 :)
                   <br />
                   {isRoundtrip
                     ? "- 가는편/오는편 편도 기준으로 합산된 금액이에요. 왕복 기준은 더 저렴할 수 있어요."
