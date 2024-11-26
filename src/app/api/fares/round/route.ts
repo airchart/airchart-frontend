@@ -63,8 +63,6 @@ export async function GET(request: Request) {
       })
       .filter((x) => x != null);
 
-    console.log(departureData, returnData);
-
     return NextResponse.json({ data: responseData });
   } catch (error) {
     console.error("Error fetching fares:", error);

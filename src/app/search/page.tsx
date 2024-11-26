@@ -102,7 +102,7 @@ function SearchResultContent() {
     <div className="min-h-screen md:p-8 p-4 font-[family-name:var(--font-geist-sans)]">
       <main className="max-w-4xl mx-auto md:mt-20 mt-12">
         {/* 검색 정보 요약 */}
-        <div className="flex md:flex-row flex-col items-center md:justify-between">
+        <div className="flex md:flex-row flex-col md:items-center md:justify-between">
           <div className="md:mb-12 mb-8 space-y-4">
             <p className="text-gray-600 dark:text-gray-400">
               인천(ICN) {isRoundtrip ? "↔" : "→"} {destCity?.name}({to})
