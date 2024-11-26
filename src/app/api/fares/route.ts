@@ -51,7 +51,7 @@ export async function GET(request: Request) {
       .eq("origin", originIndex)
       .eq("destination", destinationIndex)
       .eq("depart_date", date)
-      .order("search_date", { ascending: true })
+      .order("search_date", { ascending: false })
       .limit(30);
 
     if (supabaseError) throw supabaseError;
