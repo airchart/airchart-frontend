@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Script from "next/script";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -57,6 +58,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <div className="fixed top-4 right-4 z-50">
+          <a
+            href="https://github.com/hiimjayson/airchart-frontend"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            aria-label="GitHub 저장소로 이동"
+          >
+            <GitHubLogoIcon className="size-8 text-gray-600 dark:text-gray-400" />
+          </a>
+        </div>
         <FadeIn>{children}</FadeIn>
       </body>
     </html>
